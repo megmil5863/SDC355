@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <!-- Ensures proper scaling on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+
   <meta name="description" content="Personal portfolio homepage" />
   <title>My Portfolio</title>
 
@@ -14,6 +14,40 @@
       font-family: Arial, sans-serif;
       margin: 0;
       line-height: 1.6;
+      background: white;
+      color: black;
+    }
+
+    /* Dark mode styling */
+    .dark-mode {
+      background: #121212;
+      color: white;
+    }
+
+    .dark-mode header {
+      background: #000;
+    }
+
+    .dark-mode #welcome {
+      background: #333;
+      color: white;
+    }
+
+    .dark-mode .featured-box {
+      background: #2c2c2c;
+      color: white;
+      border-color: white;
+    }
+
+    .dark-mode a {
+      color: lightblue;
+    }
+
+    /* Dark mode toggle */
+    .toggle-container {
+      padding: 10px;
+      text-align: right;
+      background: #ddd;
     }
 
     /* Top navigation header styling */
@@ -52,6 +86,14 @@
       border: 1px solid #ccc;
     }
 
+    /* Featured content styling */
+    .featured-box {
+      border: 2px solid #222;
+      background: #f4f4f4;
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+
     /* Contact form layout */
     form {
       display: flex;
@@ -78,10 +120,18 @@
 
 <body>
 
-  <!-- Dynamic welcome message (updated via JavaScript) -->
+  <!-- Dark Mode Toggle -->
+  <div class="toggle-container">
+    <label>
+      <input type="checkbox" id="darkMode">
+      Dark Mode
+    </label>
+  </div>
+
+  <!-- Dynamic welcome message -->
   <div id="welcome">Welcome!</div>
 
-  <!-- Navigation menu linking to page sections -->
+  <!-- Navigation menu -->
   <header>
     <nav>
       <a href="#about">About</a>
@@ -90,66 +140,157 @@
     </nav>
   </header>
 
-  <!-- ABOUT SECTION: personal introduction -->
+  <!-- ABOUT SECTION -->
   <section id="about">
     <h1>About Me</h1>
+
     <p>
       Hello! I'm a web developer passionate about building clean and user-friendly websites.
       I enjoy working with HTML, CSS, and JavaScript to bring ideas to life.
       My focus is on creating responsive and accessible web experiences.
     </p>
+
+    <h2>Skills</h2>
+    <ul id="skillsList"></ul>
   </section>
 
-  <!-- PROJECTS SECTION: portfolio work showcase -->
+  <!-- FEATURED CONTENT -->
+  <section id="featured">
+    <h1>Featured Content</h1>
+
+    <div id="universityResources" class="featured-box">
+      <h2>University Resources</h2>
+
+      <p>
+        <a href="https://www.ecpi.edu/" target="_blank">
+          ECPI University Home Page
+        </a>
+      </p>
+
+      <p>
+        <a href="https://my.ecpi.edu/" target="_blank">
+          ECPI Student Portal
+        </a>
+      </p>
+    </div>
+
+    <div id="personalProjects" class="featured-box">
+      <h2>Personal Projects</h2>
+
+      <a href="https://github.com/yourusername" target="_blank">
+        <img
+          src="https://via.placeholder.com/200x130?text=My+GitHub"
+          alt="GitHub Projects">
+      </a>
+    </div>
+  </section>
+
+  <!-- PROJECTS SECTION -->
   <section id="projects" class="projects">
     <h1>Projects</h1>
+
     <p>Here are some of my recent projects:</p>
 
-    <!-- Project links with placeholder images -->
     <a href="https://github.com/yourusername/project1">
-      <img src="https://via.placeholder.com/200x130?text=Project+1" alt="Project 1" />
+      <img src="https://via.placeholder.com/200x130?text=Project+1" alt="Project 1">
     </a>
 
     <a href="https://github.com/yourusername/project2">
-      <img src="https://via.placeholder.com/200x130?text=Project+2" alt="Project 2" />
+      <img src="https://via.placeholder.com/200x130?text=Project+2" alt="Project 2">
     </a>
 
     <a href="https://github.com/yourusername/project3">
-      <img src="https://via.placeholder.com/200x130?text=Project+3" alt="Project 3" />
+      <img src="https://via.placeholder.com/200x130?text=Project+3" alt="Project 3">
     </a>
+
   </section>
 
-  <!-- CONTACT SECTION: user message form -->
+  <!-- CONTACT SECTION -->
   <section id="contact">
     <h1>Contact</h1>
+
     <p>Send me a message:</p>
 
-    <!-- Contact form collecting user input -->
     <form>
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email Address" required />
-      <input type="text" name="subject" placeholder="Subject" required />
+      <input type="text" name="name" placeholder="Your Name" required>
+
+      <input type="email" name="email" placeholder="Your Email Address" required>
+
+      <input type="text" name="subject" placeholder="Subject" required>
+
       <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
 
       <button type="submit">Send Message</button>
     </form>
   </section>
 
-  <!-- JAVASCRIPT: personalized user interaction -->
+  <!-- JAVASCRIPT -->
   <script>
+
     // Ask user for their name
     const userName = prompt("What is your name?");
 
     // Select the welcome message element
     const welcomeMessage = document.getElementById("welcome");
 
-    // Update welcome message based on user input
+    // Update welcome message
     if (userName && userName.trim() !== "") {
       welcomeMessage.textContent = `Welcome, ${userName}!`;
     } else {
-      // Fallback message if user cancels or enters nothing
       welcomeMessage.textContent = "Welcome to my portfolio!";
     }
+
+    // ===========================
+    // Skills Array and Loop
+    // ===========================
+
+    const skills = [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Git",
+      "GitHub"
+    ];
+
+    const skillsList = document.getElementById("skillsList");
+
+    skills.forEach(function(skill) {
+      const li = document.createElement("li");
+      li.textContent = skill;
+      skillsList.appendChild(li);
+    });
+
+    // ===========================
+    // Featured Content Logic
+    // ===========================
+
+    const projectCount = document.querySelectorAll(".projects a").length;
+
+    const universityResources =
+      document.getElementById("universityResources");
+
+    const personalProjects =
+      document.getElementById("personalProjects");
+
+    if (projectCount < 3) {
+      universityResources.style.display = "block";
+      personalProjects.style.display = "block";
+    } else {
+      universityResources.style.display = "none";
+      personalProjects.style.display = "block";
+    }
+
+    // ===========================
+    // Dark Mode Toggle
+    // ===========================
+
+    const darkModeCheckbox =
+      document.getElementById("darkMode");
+
+    darkModeCheckbox.addEventListener("change", function () {
+      document.body.classList.toggle("dark-mode");
+    });
+
   </script>
 
 </body>
