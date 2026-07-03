@@ -2,29 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <!-- Ensures proper scaling on mobile devices -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
   <meta name="description" content="Personal portfolio homepage" />
   <title>My Portfolio</title>
 
   <style>
+    /* Base page styling */
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       line-height: 1.6;
     }
 
+    /* Top navigation header styling */
     header {
       background: #222;
       color: white;
       padding: 1rem;
     }
 
+    /* Navigation links styling */
     nav a {
       color: white;
       margin-right: 15px;
       text-decoration: none;
     }
 
+    /* Welcome message banner styling */
     #welcome {
       background: #f4f4f4;
       padding: 1rem;
@@ -32,10 +38,12 @@
       font-size: 1.2rem;
     }
 
+    /* Section spacing */
     section {
       padding: 2rem;
     }
 
+    /* Project image styling */
     .projects img {
       width: 200px;
       height: 130px;
@@ -44,17 +52,20 @@
       border: 1px solid #ccc;
     }
 
+    /* Contact form layout */
     form {
       display: flex;
       flex-direction: column;
       max-width: 400px;
     }
 
+    /* Input and textarea styling */
     input, textarea {
       margin-bottom: 10px;
       padding: 8px;
     }
 
+    /* Submit button styling */
     button {
       padding: 10px;
       background: #222;
@@ -67,10 +78,10 @@
 
 <body>
 
-  <!-- Personalized Welcome Message -->
+  <!-- Dynamic welcome message (updated via JavaScript) -->
   <div id="welcome">Welcome!</div>
 
-  <!-- Navigation -->
+  <!-- Navigation menu linking to page sections -->
   <header>
     <nav>
       <a href="#about">About</a>
@@ -79,7 +90,7 @@
     </nav>
   </header>
 
-  <!-- About Section -->
+  <!-- ABOUT SECTION: personal introduction -->
   <section id="about">
     <h1>About Me</h1>
     <p>
@@ -89,11 +100,12 @@
     </p>
   </section>
 
-  <!-- Projects Section -->
+  <!-- PROJECTS SECTION: portfolio work showcase -->
   <section id="projects" class="projects">
     <h1>Projects</h1>
     <p>Here are some of my recent projects:</p>
 
+    <!-- Project links with placeholder images -->
     <a href="https://github.com/yourusername/project1">
       <img src="https://via.placeholder.com/200x130?text=Project+1" alt="Project 1" />
     </a>
@@ -107,11 +119,12 @@
     </a>
   </section>
 
-  <!-- Contact Section -->
+  <!-- CONTACT SECTION: user message form -->
   <section id="contact">
     <h1>Contact</h1>
     <p>Send me a message:</p>
 
+    <!-- Contact form collecting user input -->
     <form>
       <input type="text" name="name" placeholder="Your Name" required />
       <input type="email" name="email" placeholder="Your Email Address" required />
@@ -122,15 +135,19 @@
     </form>
   </section>
 
-  <!-- JavaScript -->
+  <!-- JAVASCRIPT: personalized user interaction -->
   <script>
+    // Ask user for their name
     const userName = prompt("What is your name?");
 
+    // Select the welcome message element
     const welcomeMessage = document.getElementById("welcome");
 
+    // Update welcome message based on user input
     if (userName && userName.trim() !== "") {
       welcomeMessage.textContent = `Welcome, ${userName}!`;
     } else {
+      // Fallback message if user cancels or enters nothing
       welcomeMessage.textContent = "Welcome to my portfolio!";
     }
   </script>
